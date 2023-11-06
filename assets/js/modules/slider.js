@@ -58,11 +58,22 @@ const nextSlider=()=>{
     
 }
 const prevSlider=()=>{
+    if (currentImg > 0) {
+        currentImg--;
+    } else {
+        currentImg = catalogue.length - 1;
+    }
     document.querySelector("#coverSlider").src = coverUrl + catalogue[currentImg].cover;
+    document.querySelector("#textesB p:first-child").innerText = catalogue[currentImg].titre;
+    document.querySelector("#textesB p:last-child").innerText = catalogue[currentImg].artiste;
     document.querySelector("#imgA").classList.add("transSlider","slideLeft");
+    document.querySelector("#textesA").classList.add("transSlider","slideLeft");
     setTimeout(()=>{
         document.querySelector("#imgA").src = coverUrl + catalogue[currentImg].cover;
+        document.querySelector("#textesA p:first-child").innerText = catalogue[currentImg].titre;
+        document.querySelector("#textesA p:last-child").innerText = catalogue[currentImg].artiste;
         document.querySelector("#imgA").classList.remove("transSlider","slideLeft");
+        document.querySelector("#textesA").classList.remove("transSlider","slideLeft");
     },500)
     
 }
