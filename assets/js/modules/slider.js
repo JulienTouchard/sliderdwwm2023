@@ -2,8 +2,31 @@
 const coverUrl = "./assets/img/cover/";
 const sliderHTML = document.querySelector("#slider");
 let currentImg = 0;
-
+const stopTimer = () => {
+    clearInterval(timer)
+    setTimeout(()=>{
+        timer = setInterval(()=>slider("next"),4000);
+    },2000)
+}
 const initSlider = () => {
+    /* creation du controlleur previous img */
+    const prevBTN = document.createElement("div");
+    prevBTN.id = "prevBTN";
+    prevBTN.innerHTML = "<span><</span>";
+    sliderHTML.append(prevBTN);
+    prevBTN.addEventListener("click",()=>{
+        stopTimer();
+        slider("prev");
+    });
+    /* creation du controlleur next img */
+    const nextBTN = document.createElement("div");
+    nextBTN.id = "nextBTN";
+    nextBTN.innerHTML = "<span>></span>";
+    sliderHTML.append(nextBTN);
+    nextBTN.addEventListener("click",()=>{
+        stopTimer();
+        slider("next")}
+        );
     // je cree une première image d'arriere plan fixe
     const coverSlider = document.createElement("img");
     coverSlider.src = coverUrl + catalogue[currentImg].cover;
@@ -93,5 +116,5 @@ const slider = (status = "init") => {
             break;
     }
 };
-setInterval(()=>slider("next"),4000);
+let timer = setInterval(()=>slider("next"),4000);
 export { slider };

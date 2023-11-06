@@ -51,3 +51,28 @@
 .fadeOut {
     opacity: 0;
 }
+#prevBTN{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+}
+#nextBTN{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+#prevBTN:hover,#nextBTN:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
